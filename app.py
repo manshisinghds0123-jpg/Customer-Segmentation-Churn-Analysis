@@ -1,16 +1,10 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
+import streamlit as st
 import pickle
 import numpy as np
 
-app = Flask(__name__)
-CORS(app)
-
 
 # Load trained models
-churn_model = pickle.load(
-    open("churn_model.pkl", "rb")
-)
+churn_model = pickle.load(open("churn_model.pkl", "rb"))
 
 segmentation_model = pickle.load(
     open("segmentation_model.pkl", "rb")
@@ -21,78 +15,73 @@ segmentation_scaler = pickle.load(
 )
 
 
-@app.route("/")
-def home():
-    return "Customer Segmentation & Churn Analysis API Running"
+# Title
+st.title("Customer Segmentation & Churn Analysis")
 
 
 # -----------------------------
-# CHURN PREDICTION API
+# CHURN PREDICTION
 # -----------------------------
 
-@app.route("/predict-churn", methods=["POST"])
-def predict_churn():
+st.header("Customer Churn Prediction")
 
-    data = request.json
+st.write("Enter customer details:")
 
-    # Get values sent by frontend
-    input_values = list(data.values())
+churn_inputs = []
 
-    # Check feature count
-    expected_features = churn_model.n_features_in_
+for i in range(churn_model.n_features_in_):
+    value = st.number_input(
+        f"Feature {i+1}",
+        value=0.0
+    )
+    churn_inputs.append(value)
 
-    if len(input_values) != expected_features:
-        return jsonify({
-            "error": f"Model expects {expected_features} features but received {len(input_values)}"
-        }), 400
 
+if st.button("Predict Churn"):
 
     prediction = churn_model.predict(
-        np.array(input_values).reshape(1, -1)
+        np.array(churn_inputs).reshape(1, -1)
     )[0]
 
-
     if prediction == 1:
-        result = "Customer likely to churn"
+        st.error("Customer likely to churn")
     else:
-        result = "Customer likely to stay"
-
-
-    return jsonify({
-        "prediction": result
-    })
+        st.success("Customer likely to stay")
 
 
 # -----------------------------
-# CUSTOMER SEGMENTATION API
+# CUSTOMER SEGMENTATION
 # -----------------------------
 
-@app.route("/segment-customer", methods=["POST"])
-def segment_customer():
+st.header("Customer Segmentation")
 
-    data = request.json
+segment_inputs = []
 
-    input_values = list(data.values())
+for i in range(segmentation_model.n_features_in_):
+    value = st.number_input(
+        f"Segmentation Feature {i+1}",
+        value=0.0,
+        key=f"segment_{i}"
+    )
+    segment_inputs.append(value)
 
+
+if st.button("Find Customer Segment"):
 
     scaled_data = segmentation_scaler.transform(
-        np.array(input_values).reshape(1, -1)
+        np.array(segment_inputs).reshape(1, -1)
     )
-
 
     segment = segmentation_model.predict(
         scaled_data
     )[0]
 
+    st.info(
+        f"Customer belongs to Segment: {int(segment)}"
+    )
 
-    return jsonify({
-        "customer_segment": int(segment)
-    })
 
-@app.route("/features")
-def get_features():
-    return jsonify({
-        "required_features": int(churn_model.n_features_in_)
-    })
-if __name__ == "__main__":
-    app.run(debug=True)
+   
+      
+
+   
