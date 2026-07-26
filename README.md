@@ -90,21 +90,22 @@ Returns the customer segment.
 
 ---
 
-## Screenshots
+## 📸 Screenshots
 
-Screenshots will be added after completing the frontend dashboard.
+### 🏠 Home / Churn Prediction
+![Home](screenshots/Churn_prediction.png)
 
-### Dashboard
+### 📊 Dashboard
+![Dashboard](screenshots/04_Dashboard.png)
 
-(Add dashboard screenshot here)
+### ✅ Customer Likely to Stay
+![Stay](screenshots/Stay.png)
 
-### Churn Prediction Result
+### ❌ Customer Likely to Churn
+![Leave](screenshots/Leave.png)
 
-(Add churn prediction screenshot here)
-
-### Customer Segmentation Result
-
-(Add customer segmentation screenshot here)
+### 👥 Customer Segmentation
+![Segment](screenshots/Segment.png)
 
 ---
 
