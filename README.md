@@ -90,13 +90,11 @@ Returns the customer segment.
 
 ---
 
+
 ## 📸 Screenshots
 
-### 🏠 Home / Churn Prediction
-![Home](screenshots/Churn_prediction.png)
-
-### 📊 Dashboard
-![Dashboard](screenshots/04_Dashboard.png)
+### 🏠 Home
+![Home](screenshots/Home.png)
 
 ### ✅ Customer Likely to Stay
 ![Stay](screenshots/Stay.png)
@@ -107,6 +105,8 @@ Returns the customer segment.
 ### 👥 Customer Segmentation
 ![Segment](screenshots/Segment.png)
 
+### 📊 Dashboard
+![Dashboard](screenshots/Dashboard.png)
 ---
 
 ## Future Enhancements
