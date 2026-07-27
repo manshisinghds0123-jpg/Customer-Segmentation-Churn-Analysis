@@ -90,24 +90,23 @@ Returns the customer segment.
 
 ---
 
-
 ## 📸 Screenshots
 
 ### 🏠 Home
-![Home](screenshots/Home.png)
+![Home](01_Home.png)
 
 ### ✅ Customer Likely to Stay
-![Stay](screenshots/Stay.png)
+![Stay](02_Stay.png)
 
 ### ❌ Customer Likely to Churn
-![Leave](screenshots/Leave.png)
+![Churn](03_Churn.png)
 
 ### 👥 Customer Segmentation
-![Segment](screenshots/Segment.png)
+![Segment](04_Segment.png)
 
 ### 📊 Dashboard
-![Dashboard](screenshots/Dashboard.png)
----
+![Dashboard](05_Dashboard.png)
+
 
 ## Future Enhancements
 
