@@ -107,6 +107,10 @@ Returns the customer segment.
 ### 📊 Dashboard
 ![Dashboard](05_Dashboard.png)
 
+## Live Demo
+
+Frontend:
+https://insight-sparkle-440.lovable.app
 
 ## Future Enhancements
 
